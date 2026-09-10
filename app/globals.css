@@ -1,0 +1,194 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ModamFaNum — the ONLY Persian typeface for this site (strict brand rule).
+ * Two ways it loads, in priority order:
+ *   1. local()  — renders instantly if ModamFaNum is installed on the device
+ *                 (you own the commercial font, so this works in your preview).
+ *   2. url()    — activates for every visitor once the .woff2 files are added
+ *                 to /public/fonts. Filenames below are what to upload.
+ * Vazirmatn is intentionally NOT used.
+ */
+@font-face {
+  font-family: 'ModamFaNum';
+  src:
+    local('ModamFaNum'), local('Modam FaNum'), local('Modam'),
+    url('/fonts/ModamFaNum-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ModamFaNum';
+  src:
+    local('ModamFaNum Medium'), local('Modam FaNum Medium'),
+    local('Modam Medium'),
+    url('/fonts/ModamFaNum-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ModamFaNum';
+  src:
+    local('ModamFaNum SemiBold'), local('Modam FaNum SemiBold'),
+    local('Modam SemiBold'),
+    url('/fonts/ModamFaNum-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ModamFaNum';
+  src:
+    local('ModamFaNum Bold'), local('Modam FaNum Bold'), local('Modam Bold'),
+    url('/fonts/ModamFaNum-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-warm: var(--warm);
+  --color-warm-foreground: var(--warm-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: 'ModamFaNum', sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-spin-slow: spin 32s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+:root {
+  color-scheme: light;
+  --radius: 0.5rem;
+
+  /* Neutrals — mostly white canvas */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.16 0.006 250);
+  --surface: oklch(0.984 0.002 250);
+  --surface-foreground: oklch(0.16 0.006 250);
+
+  /* Warm off-white — used for the participation section */
+  --warm: oklch(0.972 0.008 85);
+  --warm-foreground: oklch(0.16 0.006 250);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.006 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.006 250);
+
+  /* Ink primary */
+  --primary: oklch(0.17 0.006 250);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.968 0.002 250);
+  --secondary-foreground: oklch(0.17 0.006 250);
+  --muted: oklch(0.968 0.002 250);
+  --muted-foreground: oklch(0.5 0.008 250);
+
+  /* Deep VETROS emerald — used sparingly */
+  --accent: oklch(0.5 0.11 165);
+  --accent-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.915 0.003 250);
+  --input: oklch(0.915 0.003 250);
+  --ring: oklch(0.5 0.11 165);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'ss01', 'ss02';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+  /* Latin brand tokens (PIE / VETROS / BRAND 01) — same ModamFaNum family */
+  .font-latin {
+    font-family: 'ModamFaNum', sans-serif;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .animate-marquee,
+    .animate-spin-slow {
+      animation: none !important;
+    }
+  }
+}
