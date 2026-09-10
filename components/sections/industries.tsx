@@ -1,13 +1,13 @@
-'use client'
+"use client";
 
-import { Reveal } from '@/components/reveal'
-import { SectionLabel } from '@/components/section-label'
+import { Reveal } from "@/components/reveal";
+import { SectionLabel } from "@/components/section-label";
 
 interface Path {
-  num: string
-  title: string
-  desc: string
-  Mark: () => JSX.Element
+  num: string;
+  title: string;
+  desc: string;
+  Mark: () => React.JSX.Element;
 }
 
 /* ── Minimal geometric botanical marks ─────────────────────────────
@@ -18,7 +18,12 @@ interface Path {
 function MarkGrain() {
   // صنایع غذایی — a stylized grain / sprout
   return (
-    <svg viewBox="0 0 44 44" fill="none" className="h-11 w-11" aria-hidden="true">
+    <svg
+      viewBox="0 0 44 44"
+      fill="none"
+      className="h-11 w-11"
+      aria-hidden="true"
+    >
       <path
         d="M22 40V16"
         stroke="currentColor"
@@ -45,13 +50,18 @@ function MarkGrain() {
       ))}
       <circle cx="22" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.5" />
     </svg>
-  )
+  );
 }
 
 function MarkBoll() {
   // کیف، کفش و پوشاک — a cotton boll / fiber bud
   return (
-    <svg viewBox="0 0 44 44" fill="none" className="h-11 w-11" aria-hidden="true">
+    <svg
+      viewBox="0 0 44 44"
+      fill="none"
+      className="h-11 w-11"
+      aria-hidden="true"
+    >
       <path
         d="M22 39V25"
         stroke="currentColor"
@@ -71,13 +81,18 @@ function MarkBoll() {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 function MarkRosette() {
   // صنایع دستی — a geometric six-petal rosette
   return (
-    <svg viewBox="0 0 44 44" fill="none" className="h-11 w-11" aria-hidden="true">
+    <svg
+      viewBox="0 0 44 44"
+      fill="none"
+      className="h-11 w-11"
+      aria-hidden="true"
+    >
       {[0, 60, 120, 180, 240, 300].map((deg) => (
         <ellipse
           key={deg}
@@ -92,47 +107,58 @@ function MarkRosette() {
       ))}
       <circle cx="22" cy="22" r="2.5" stroke="currentColor" strokeWidth="1.5" />
     </svg>
-  )
+  );
 }
 
 function MarkRings() {
   // مبلمان و تجهیزات خانه — wood cross-section growth rings
   return (
-    <svg viewBox="0 0 44 44" fill="none" className="h-11 w-11" aria-hidden="true">
+    <svg
+      viewBox="0 0 44 44"
+      fill="none"
+      className="h-11 w-11"
+      aria-hidden="true"
+    >
       <circle cx="22" cy="22" r="16" stroke="currentColor" strokeWidth="1.5" />
-      <circle cx="22" cy="22" r="10.5" stroke="currentColor" strokeWidth="1.5" />
+      <circle
+        cx="22"
+        cy="22"
+        r="10.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
       <circle cx="22" cy="22" r="5" stroke="currentColor" strokeWidth="1.5" />
       <circle cx="22" cy="22" r="1" fill="currentColor" />
     </svg>
-  )
+  );
 }
 
 const PATHS: Path[] = [
   {
-    num: '01',
-    title: 'صنایع غذایی',
-    desc: 'محصولات طبیعی، مواد غذایی خشک، فرآوری و بسته‌بندی استاندارد برای بازارهای صادراتی.',
+    num: "01",
+    title: "صنایع غذایی",
+    desc: "محصولات طبیعی، مواد غذایی خشک، فرآوری و بسته‌بندی استاندارد برای بازارهای صادراتی.",
     Mark: MarkGrain,
   },
   {
-    num: '02',
-    title: 'کیف، کفش و پوشاک',
-    desc: 'توسعه محصول، تأمین مواد اولیه، طراحی، تولید و آماده‌سازی برای عرضه در بازار جهانی.',
+    num: "02",
+    title: "کیف، کفش و پوشاک",
+    desc: "توسعه محصول، تأمین مواد اولیه، طراحی، تولید و آماده‌سازی برای عرضه در بازار جهانی.",
     Mark: MarkBoll,
   },
   {
-    num: '03',
-    title: 'صنایع دستی',
-    desc: 'توسعه محصولات اصیل، استانداردسازی کیفیت و تبدیل صنایع دستی ایران به برندهای جهانی.',
+    num: "03",
+    title: "صنایع دستی",
+    desc: "توسعه محصولات اصیل، استانداردسازی کیفیت و تبدیل صنایع دستی ایران به برندهای جهانی.",
     Mark: MarkRosette,
   },
   {
-    num: '04',
-    title: 'مبلمان و تجهیزات خانه',
-    desc: 'مبلمان، دکوراسیون و تجهیزات خانه و آشپزخانه، همراه با زنجیره تأمین یکپارچه و منسجم.',
+    num: "04",
+    title: "مبلمان و تجهیزات خانه",
+    desc: "مبلمان، دکوراسیون و تجهیزات خانه و آشپزخانه، همراه با زنجیره تأمین یکپارچه و منسجم.",
     Mark: MarkRings,
   },
-]
+];
 
 export function Industries() {
   return (
@@ -148,7 +174,7 @@ export function Industries() {
               <SectionLabel index="03">PRODUCTION PATHS</SectionLabel>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-7 text-pretty text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+              <h2 className="mt-7 text-pretty text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl font-modam">
                 چهار مسیر اصلی تولید
               </h2>
             </Reveal>
@@ -163,7 +189,7 @@ export function Industries() {
         {/* Editorial index — full-width numbered rows */}
         <div className="mt-16 border-b border-border md:mt-20">
           {PATHS.map((p, i) => {
-            const { Mark } = p
+            const { Mark } = p;
             return (
               <Reveal key={p.num} delay={i * 70}>
                 <article className="group relative grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-3 border-t border-border py-8 transition-colors duration-500 md:grid-cols-[7rem_1fr_auto] md:gap-x-12 md:py-11">
@@ -177,7 +203,7 @@ export function Industries() {
                   </span>
 
                   <div className="col-start-2 md:col-start-2">
-                    <h3 className="text-pretty text-2xl font-semibold leading-snug text-foreground md:text-3xl">
+                    <h3 className="text-pretty text-2xl font-semibold leading-snug text-foreground md:text-3xl font-modam">
                       {p.title}
                     </h3>
                     <p className="mt-3 max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground md:text-base">
@@ -190,10 +216,10 @@ export function Industries() {
                   </span>
                 </article>
               </Reveal>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }

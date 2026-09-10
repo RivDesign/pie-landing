@@ -64,7 +64,7 @@ export function SiteHeader() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="text-[14px] font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {item.label}
               </a>

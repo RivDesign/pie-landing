@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 /**
  * ECONOMIC MODEL — economic development sequence.
@@ -14,67 +14,67 @@
 
 const STEPS = [
   {
-    num: '01',
-    title: 'آموزش تولیدکننده',
-    desc: 'توانمندسازی، آموزش مهارت و انتقال دانش موردنیاز برای ارتقای تولید',
+    num: "01",
+    title: "آموزش تولیدکننده",
+    desc: "توانمندسازی، آموزش مهارت و انتقال دانش موردنیاز برای ارتقای تولید",
   },
   {
-    num: '02',
-    title: 'مشارکت با وتروس',
-    desc: 'اتصال تولیدکننده به زیرساخت‌ها، شبکه و مدل همکاری وتروس',
+    num: "02",
+    title: "مشارکت با وتروس",
+    desc: "اتصال تولیدکننده به زیرساخت‌ها، شبکه و مدل همکاری وتروس",
   },
   {
-    num: '03',
-    title: 'برند تجمیعی',
-    desc: 'قرار گرفتن تولیدکنندگان در ساختار برندهای تجمیعی و استفاده از زیرساخت مشترک برند',
+    num: "03",
+    title: "برند تجمیعی",
+    desc: "قرار گرفتن تولیدکنندگان در ساختار برندهای تجمیعی و استفاده از زیرساخت مشترک برند",
   },
   {
-    num: '04',
-    title: 'ایجاد ارزش',
-    desc: 'تولید محصول، ایجاد ارزش اقتصادی و شکل‌گیری ظرفیت تجاری',
+    num: "04",
+    title: "ایجاد ارزش",
+    desc: "تولید محصول، ایجاد ارزش اقتصادی و شکل‌گیری ظرفیت تجاری",
   },
   {
-    num: '05',
-    title: 'فروش',
-    desc: 'عرضه محصول در بازارهای هدف و توسعه فروش B2B و D2C',
+    num: "05",
+    title: "فروش",
+    desc: "عرضه محصول در بازارهای هدف و توسعه فروش B2B و D2C",
   },
   {
-    num: '06',
-    title: 'توسعه ظرفیت',
-    desc: 'بازگشت بخشی از ارزش ایجادشده به مسیر توسعه تجهیزات، ظرفیت تولید و زیرساخت',
+    num: "06",
+    title: "توسعه ظرفیت",
+    desc: "بازگشت بخشی از ارزش ایجادشده به مسیر توسعه تجهیزات، ظرفیت تولید و زیرساخت",
   },
   {
-    num: '07',
-    title: 'تولید بیشتر',
-    desc: 'افزایش ظرفیت تولید، توسعه واحدهای جدید و گسترش شبکه تولیدکنندگان',
+    num: "07",
+    title: "تولید بیشتر",
+    desc: "افزایش ظرفیت تولید، توسعه واحدهای جدید و گسترش شبکه تولیدکنندگان",
   },
-]
+];
 
-const VB_W = 1000
-const VB_H = 660
-const C = { x: 500, y: 486 }
-const R_NODE = 306
-const R_CARD = 392
-const R_CENTER = 104
+const VB_W = 1000;
+const VB_H = 660;
+const C = { x: 500, y: 486 };
+const R_NODE = 306;
+const R_CARD = 392;
+const R_CENTER = 104;
 
 // i = 0 (far right, θ=0) → i = 6 (far left, θ=180). Screen y is inverted so
 // increasing θ sweeps over the TOP of the anchor circle.
 function pos(i: number, r: number) {
-  const theta = (i * 30 * Math.PI) / 180
-  return { x: C.x + r * Math.cos(theta), y: C.y - r * Math.sin(theta) }
+  const theta = (i * 30 * Math.PI) / 180;
+  return { x: C.x + r * Math.cos(theta), y: C.y - r * Math.sin(theta) };
 }
 
 // Arc sampled from the same formula so it passes exactly through every node,
 // drawn right → left (θ: 0 → π).
 const ARC_PATH =
-  'M ' +
+  "M " +
   Array.from({ length: 73 }, (_, k) => {
-    const th = (k / 72) * Math.PI
+    const th = (k / 72) * Math.PI;
     return `${(C.x + R_NODE * Math.cos(th)).toFixed(1)},${(
       C.y -
       R_NODE * Math.sin(th)
-    ).toFixed(1)}`
-  }).join(' L ')
+    ).toFixed(1)}`;
+  }).join(" L ");
 
 export function ValueLoop() {
   return (
@@ -91,8 +91,16 @@ export function ValueLoop() {
             {/* direction hint: soft gradient fading toward the left endpoint */}
             <defs>
               <linearGradient id="flowGrad" x1="1" y1="0" x2="0" y2="0">
-                <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.15" />
-                <stop offset="55%" stopColor="var(--accent)" stopOpacity="0.55" />
+                <stop
+                  offset="0%"
+                  stopColor="var(--accent)"
+                  stopOpacity="0.15"
+                />
+                <stop
+                  offset="55%"
+                  stopColor="var(--accent)"
+                  stopOpacity="0.55"
+                />
                 <stop offset="100%" stopColor="var(--accent)" stopOpacity="1" />
               </linearGradient>
             </defs>
@@ -129,7 +137,7 @@ export function ValueLoop() {
               x={C.x}
               y={C.y - 10}
               textAnchor="middle"
-              className="fill-foreground"
+              className="fill-foreground font-modam"
               style={{ fontSize: 19, fontWeight: 700 }}
             >
               مدل توسعه
@@ -138,7 +146,7 @@ export function ValueLoop() {
               x={C.x}
               y={C.y + 20}
               textAnchor="middle"
-              className="fill-accent"
+              className="fill-accent font-modam"
               style={{ fontSize: 22, fontWeight: 800 }}
             >
               اقتصادی
@@ -155,8 +163,8 @@ export function ValueLoop() {
 
             {/* connectors node → card, and nodes */}
             {STEPS.map((s, i) => {
-              const n = pos(i, R_NODE)
-              const c = pos(i, R_NODE + 44)
+              const n = pos(i, R_NODE);
+              const c = pos(i, R_NODE + 44);
               return (
                 <g key={s.num}>
                   <line
@@ -177,7 +185,7 @@ export function ValueLoop() {
                   />
                   <circle cx={n.x} cy={n.y} r="3" fill="var(--accent)" />
                 </g>
-              )
+              );
             })}
 
             {/* travelling pulse: right → left toward «تولید بیشتر» */}
@@ -202,7 +210,7 @@ export function ValueLoop() {
 
           {/* step cards — absolutely positioned around the arc */}
           {STEPS.map((s, i) => {
-            const c = pos(i, R_CARD)
+            const c = pos(i, R_CARD);
             return (
               <div
                 key={s.num}
@@ -222,7 +230,7 @@ export function ValueLoop() {
                   {s.desc}
                 </p>
               </div>
-            )
+            );
           })}
         </div>
       </div>
@@ -254,5 +262,5 @@ export function ValueLoop() {
         ))}
       </ol>
     </div>
-  )
+  );
 }

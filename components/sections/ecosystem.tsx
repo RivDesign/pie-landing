@@ -30,7 +30,7 @@ export function Ecosystem() {
             </SectionLabel>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-6 text-pretty text-3xl font-semibold leading-[1.3] tracking-tight md:text-4xl lg:text-[42px]">
+            <h2 className="mt-6 text-pretty text-3xl font-semibold font-modam leading-[1.3] tracking-tight md:text-4xl lg:text-[42px]">
               یک اکوسیستم یکپارچه؛ از تولید ایران تا{' '}
               <span className="text-accent">بازارهای جهانی</span>
             </h2>

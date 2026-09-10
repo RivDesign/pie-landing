@@ -1,14 +1,14 @@
-import { Logo } from '@/components/logo'
+import { Logo } from "@/components/logo";
 
 const FOOTER_LINKS = [
-  { label: 'درباره پلتفرم', href: '#about' },
-  { label: 'مسیر تجهیز', href: '#journey' },
-  { label: 'حوزه‌های فعالیت', href: '#industries' },
-  { label: 'برندها', href: '#participation' },
-  { label: 'تماس', href: '#contact' },
-]
+  { label: "درباره پلتفرم", href: "#about" },
+  { label: "مسیر تجهیز", href: "#journey" },
+  { label: "حوزه‌های فعالیت", href: "#industries" },
+  { label: "برندها", href: "#participation" },
+  { label: "تماس", href: "#contact" },
+];
 
-const VETROS_URL = 'https://vetros.ir'
+const VETROS_URL = "https://vetros.ir";
 
 export function FinalCtaFooter() {
   return (
@@ -17,7 +17,7 @@ export function FinalCtaFooter() {
         <div className="grid gap-14 lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
           {/* PIE identity */}
           <div className="flex flex-col items-start gap-4">
-            <span className="font-latin text-xl font-bold tracking-tight text-white">
+            <span className="font-latin text-xl font-bold tracking-tight text-white font-modam">
               PIE شرکت نوآوران پدرام شرق
             </span>
             <p className="text-base leading-relaxed text-white/55">
@@ -85,5 +85,5 @@ export function FinalCtaFooter() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

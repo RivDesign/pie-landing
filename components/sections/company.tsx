@@ -31,7 +31,7 @@ export function Company() {
           </SectionLabel>
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-7 max-w-3xl text-pretty text-3xl font-semibold leading-[1.35] tracking-tight md:text-4xl lg:text-[44px] lg:leading-[1.3]">
+          <h2 className="mt-7 max-w-3xl text-pretty text-3xl font-semibold leading-[1.35] tracking-tight md:text-4xl lg:text-[44px] lg:leading-[1.3] font-modam">
             پشت این پلتفرم، یک تیم توسعه‌دهنده ایستاده است.
           </h2>
         </Reveal>
@@ -71,7 +71,7 @@ export function Company() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div>
-                    <h3 className="text-xl font-semibold text-primary-foreground md:text-2xl">
+                    <h3 className="text-xl font-semibold text-primary-foreground md:text-2xl font-modam">
                       {cap.title}
                     </h3>
                     <p className="mt-2 text-pretty leading-relaxed text-primary-foreground/60">

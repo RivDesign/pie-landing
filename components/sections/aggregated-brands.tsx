@@ -1,88 +1,106 @@
-import { Reveal } from '@/components/reveal'
-import { SectionLabel } from '@/components/section-label'
-import { ProductGallery } from '@/components/product-gallery'
-import { ValueLoop } from '@/components/value-loop'
-import { ArrowLeft } from 'lucide-react'
-
+import { Reveal } from "@/components/reveal";
+import { SectionLabel } from "@/components/section-label";
+import { ProductGallery } from "@/components/product-gallery";
+import { ValueLoop } from "@/components/value-loop";
+import { ArrowLeft } from "lucide-react";
+import VetrosLogo from "@/assets/Vetros-logo.png";
+import Image from "next/image";
+import ImgEcoIrenLogo from "@/assets/eco-iren-logo.png";
+import ImgZenqovoLogo from "@/assets/zenqovo-logo.png";
+import ImgWdsLogo from "@/assets/wds-logo.png";
+import ImgNichvanLogo from "@/assets/nichvan-logo.png";
 const PILLARS = [
   {
-    num: '01',
-    title: 'تأمین هوشمند',
-    desc: 'تجمیع نیازهای خرید مواد اولیه، تجهیزات و خدمات برای ایجاد قدرت تأمین و کاهش هزینه‌های زنجیره تولید.',
+    num: "01",
+    title: "تأمین هوشمند",
+    desc: "تجمیع نیازهای خرید مواد اولیه، تجهیزات و خدمات برای ایجاد قدرت تأمین و کاهش هزینه‌های زنجیره تولید.",
   },
   {
-    num: '02',
-    title: 'استانداردسازی',
-    desc: 'ایجاد استانداردهای مشترک و کنترل کیفیت برای اطمینان از ثبات محصول، صرف‌نظر از واحد تولیدکننده.',
+    num: "02",
+    title: "استانداردسازی",
+    desc: "ایجاد استانداردهای مشترک و کنترل کیفیت برای اطمینان از ثبات محصول، صرف‌نظر از واحد تولیدکننده.",
   },
   {
-    num: '03',
-    title: 'توسعه محصول و برند',
-    desc: 'طراحی، توسعه و بهینه‌سازی محصولات بر اساس نیاز بازارهای هدف و ایجاد هویت تجاری یکپارچه.',
+    num: "03",
+    title: "توسعه محصول و برند",
+    desc: "طراحی، توسعه و بهینه‌سازی محصولات بر اساس نیاز بازارهای هدف و ایجاد هویت تجاری یکپارچه.",
   },
   {
-    num: '04',
-    title: 'لجستیک و بازار جهانی',
-    desc: 'ایجاد زیرساخت مشترک برای انبارداری، حمل‌ونقل، فروش B2B و D2C و ورود به بازارهای بین‌المللی.',
+    num: "04",
+    title: "لجستیک و بازار جهانی",
+    desc: "ایجاد زیرساخت مشترک برای انبارداری، حمل‌ونقل، فروش B2B و D2C و ورود به بازارهای بین‌المللی.",
   },
-]
+];
 
 const FRAGMENTED = [
-  'تولیدکنندگان مستقل',
-  'ظرفیت‌های پراکنده',
-  'تأمین‌های جداگانه',
-  'برندهای کوچک',
-  'بازار محدود',
-]
+  "تولیدکنندگان مستقل",
+  "ظرفیت‌های پراکنده",
+  "تأمین‌های جداگانه",
+  "برندهای کوچک",
+  "بازار محدود",
+];
 
-  const UNIFIED = [
-  'تولیدکنندگان ایرانی',
-  'تجمیع ظرفیت',
-  'تأمین مشترک',
-  'استاندارد مشترک',
-  'برند واحد',
-  'بازار جهانی',
-]
+const UNIFIED = [
+  "تولیدکنندگان ایرانی",
+  "تجمیع ظرفیت",
+  "تأمین مشترک",
+  "استاندارد مشترک",
+  "برند واحد",
+  "بازار جهانی",
+];
 
 const VALUE = [
-  { title: 'دسترسی به بازار بزرگ‌تر', desc: 'ورود به شبکه فروش و بازارهای هدف گسترده‌تر.' },
-  { title: 'استانداردسازی و کنترل کیفیت', desc: 'کیفیت پایدار مطابق استانداردهای بازار.' },
-  { title: 'تأمین قدرتمندتر', desc: 'خرید مشترک و زنجیره تأمین کارآمدتر.' },
-  { title: 'توسعه محصول', desc: 'بهبود و توسعه محصول بر اساس نیاز بازار.' },
-  { title: 'برندینگ حرفه‌ای', desc: 'هویت تجاری قوی و قابل‌رقابت.' },
-  { title: 'بسته‌بندی جهانی', desc: 'بسته‌بندی مطابق استاندارد بازارهای بین‌المللی.' },
-  { title: 'لجستیک یکپارچه', desc: 'انبار، حمل‌ونقل و توزیع مشترک.' },
-  { title: 'فروش B2B و D2C', desc: 'کانال‌های فروش متنوع و مستقیم.' },
-]
+  {
+    title: "دسترسی به بازار بزرگ‌تر",
+    desc: "ورود به شبکه فروش و بازارهای هدف گسترده‌تر.",
+  },
+  {
+    title: "استانداردسازی و کنترل کیفیت",
+    desc: "کیفیت پایدار مطابق استانداردهای بازار.",
+  },
+  { title: "تأمین قدرتمندتر", desc: "خرید مشترک و زنجیره تأمین کارآمدتر." },
+  { title: "توسعه محصول", desc: "بهبود و توسعه محصول بر اساس نیاز بازار." },
+  { title: "برندینگ حرفه‌ای", desc: "هویت تجاری قوی و قابل‌رقابت." },
+  {
+    title: "بسته‌بندی جهانی",
+    desc: "بسته‌بندی مطابق استاندارد بازارهای بین‌المللی.",
+  },
+  { title: "لجستیک یکپارچه", desc: "انبار، حمل‌ونقل و توزیع مشترک." },
+  { title: "فروش B2B و D2C", desc: "کانال‌های فروش متنوع و مستقیم." },
+];
 
 const ARCHITECTURE = [
   {
-    num: '01',
-    brand: 'ECO IREN',
-    name: 'برند تجمیعی ۰۱',
-    industry: 'صنایع غذایی',
+    num: "01",
+    brand: "ECO IREN",
+    name: "برند تجمیعی ۰۱",
+    industry: "صنایع غذایی",
+    image: ImgEcoIrenLogo,
   },
   {
-    num: '02',
-    brand: 'ZENQOVO',
-    name: 'برند تجمیعی ۰۲',
-    industry: 'کیف، کفش و پوشاک',
+    num: "02",
+    brand: "ZENQOVO",
+    name: "برند تجمیعی ۰۲",
+    industry: "کیف، کفش و پوشاک",
+    image: ImgZenqovoLogo,
   },
   {
-    num: '03',
-    brand: 'WHITE DEER',
-    name: 'برند تجمیعی ۰۳',
-    industry: 'صنایع دستی',
+    num: "03",
+    brand: "WHITE DEER",
+    name: "برند تجمیعی ۰۳",
+    industry: "صنایع دستی",
+    image: ImgWdsLogo,
   },
   {
-    num: '04',
-    brand: 'NICHVAN',
-    name: 'برند تجمیعی ۰۴',
-    industry: 'مبلمان و تجهیزات خانه',
+    num: "04",
+    brand: "NICHVAN",
+    name: "برند تجمیعی ۰۴",
+    industry: "مبلمان و تجهیزات خانه",
+    image: ImgNichvanLogo,
   },
-]
+];
 
-const PRODUCERS = ['۰۱', '۰۲', '۰۳', '۰۴', '۰۵', '۰۶']
+const PRODUCERS = ["۰۱", "۰۲", "۰۳", "۰۴", "۰۵", "۰۶"];
 
 export function AggregatedBrands() {
   return (
@@ -98,7 +116,7 @@ export function AggregatedBrands() {
               <SectionLabel index="04">AGGREGATED BRANDS</SectionLabel>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-7 text-balance text-4xl font-semibold leading-[1.25] tracking-tight md:text-5xl lg:text-[60px] lg:leading-[1.15]">
+              <h2 className="mt-7 text-balance text-4xl font-semibold font-modam leading-[1.25] tracking-tight md:text-5xl lg:text-[60px] lg:leading-[1.15]">
                 چند تولیدکننده،
                 <br />
                 <span className="text-accent">یک برند جهانی.</span>
@@ -108,9 +126,9 @@ export function AggregatedBrands() {
           <div className="space-y-5">
             <Reveal delay={140}>
               <p className="text-pretty leading-relaxed text-muted-foreground">
-              وتروس با ایجاد برندهای تجمیعی، ظرفیت تولیدکنندگان ایرانی را در یک
-              ساختار یکپارچه گرد هم می‌آورد تا محصولاتی استاندارد،
-              قابل‌رقابت و آماده حضور در بازارهای جهانی شکل بگیرند.
+                وتروس با ایجاد برندهای تجمیعی، ظرفیت تولیدکنندگان ایرانی را در
+                یک ساختار یکپارچه گرد هم می‌آورد تا محصولاتی استاندارد،
+                قابل‌رقابت و آماده حضور در بازارهای جهانی شکل بگیرند.
               </p>
             </Reveal>
             <Reveal delay={200}>
@@ -140,7 +158,7 @@ export function AggregatedBrands() {
                 <SectionLabel>DEFINITION</SectionLabel>
               </Reveal>
               <Reveal delay={80}>
-                <h3 className="mt-6 text-pretty text-2xl font-semibold tracking-tight md:text-3xl">
+                <h3 className="mt-6 text-pretty text-2xl font-semibold tracking-tight md:text-3xl font-modam">
                   برند تجمیعی چیست؟
                 </h3>
               </Reveal>
@@ -163,8 +181,8 @@ export function AggregatedBrands() {
           </div>
 
           <Reveal delay={80}>
-            <p className="mt-14 max-w-4xl text-balance text-3xl font-semibold leading-[1.4] tracking-tight md:mt-20 md:text-4xl lg:text-5xl">
-              از ظرفیت‌های پراکنده، به یک ساختار یکپارچه برای{' '}
+            <p className="mt-14 max-w-4xl text-balance font-modam text-3xl font-semibold leading-[1.4] tracking-tight md:mt-20 md:text-4xl lg:text-5xl">
+              از ظرفیت‌های پراکنده، به یک ساختار یکپارچه برای{" "}
               <span className="text-accent">توسعه جامع و تولید ملی.</span>
             </p>
           </Reveal>
@@ -178,7 +196,7 @@ export function AggregatedBrands() {
             <SectionLabel index="—">WHY AGGREGATION</SectionLabel>
           </Reveal>
           <Reveal delay={80}>
-            <h3 className="mt-7 max-w-2xl text-pretty text-3xl font-semibold tracking-tight md:text-4xl">
+            <h3 className="mt-7 max-w-2xl text-pretty text-3xl font-semibold tracking-tight md:text-4xl font-modam">
               از ظرفیت های پراکنده، به یک ساختار واحد
             </h3>
           </Reveal>
@@ -198,7 +216,10 @@ export function AggregatedBrands() {
                         {f}
                       </span>
                       {i < FRAGMENTED.length - 1 && (
-                        <span className="my-1.5 h-4 w-px bg-border" aria-hidden />
+                        <span
+                          className="my-1.5 h-4 w-px bg-border"
+                          aria-hidden
+                        />
                       )}
                     </li>
                   ))}
@@ -226,7 +247,10 @@ export function AggregatedBrands() {
                         {u}
                       </span>
                       {i < UNIFIED.length - 1 && (
-                        <span className="my-1.5 h-4 w-px bg-accent/30" aria-hidden />
+                        <span
+                          className="my-1.5 h-4 w-px bg-accent/30"
+                          aria-hidden
+                        />
                       )}
                     </li>
                   ))}
@@ -246,7 +270,7 @@ export function AggregatedBrands() {
                 <SectionLabel>FOUR PILLARS</SectionLabel>
               </Reveal>
               <Reveal delay={80}>
-                <h3 className="mt-6 text-pretty text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+                <h3 className="mt-6 text-pretty text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl font-modam">
                   چهار ستون مدل تجمیعی
                 </h3>
               </Reveal>
@@ -271,7 +295,7 @@ export function AggregatedBrands() {
                     {p.num}
                   </span>
                   <div>
-                    <h4 className="text-pretty text-2xl font-semibold text-foreground md:text-3xl">
+                    <h4 className="text-pretty text-2xl font-semibold text-foreground md:text-3xl font-modam">
                       {p.title}
                     </h4>
                     <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
@@ -293,7 +317,7 @@ export function AggregatedBrands() {
               <SectionLabel>PRODUCER NETWORK</SectionLabel>
             </Reveal>
             <Reveal delay={80}>
-              <h3 className="mt-7 text-pretty text-3xl font-semibold tracking-tight md:text-4xl">
+              <h3 className="mt-7 text-pretty text-3xl font-semibold tracking-tight md:text-4xl font-modam">
                 هم‌افزایی تولیدکنندگان پروژه زیر چتر برندهای تجمیعی هولدینگ
               </h3>
             </Reveal>
@@ -316,7 +340,10 @@ export function AggregatedBrands() {
                     key={n}
                     className="flex items-center gap-2 rounded-lg border border-border bg-surface/50 px-3 py-3"
                   >
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+                    <span
+                      className="h-1.5 w-1.5 rounded-full bg-accent"
+                      aria-hidden
+                    />
                     <span className="text-sm font-medium text-foreground">
                       تولیدکننده {n}
                     </span>
@@ -333,13 +360,18 @@ export function AggregatedBrands() {
             {/* brand core */}
             <Reveal delay={100}>
               <div className="rounded-2xl border border-primary bg-primary px-6 py-8 text-center text-primary-foreground">
-                <span className="font-latin text-lg font-extrabold tracking-wide">
-                  VETROS
-                </span>
+                <div className="aspect-610/203 relative max-w-25 mx-auto">
+                  <Image
+                    fill
+                    src={VetrosLogo}
+                    alt="Vetros Logo"
+                    className="object-cover size-full block"
+                  />
+                </div>
                 <p className="mt-1 text-sm opacity-80">برند تجمیعی</p>
                 <span className="mx-auto mt-4 block h-px w-10 bg-primary-foreground/25" />
-                  <p className="mt-4 text-xs leading-relaxed opacity-70">
-                    اتصال، سازمان‌دهی و تقویت شبکه تولید
+                <p className="mt-4 text-xs leading-relaxed opacity-70">
+                  اتصال، سازمان‌دهی و تقویت شبکه تولید
                 </p>
               </div>
             </Reveal>
@@ -352,7 +384,7 @@ export function AggregatedBrands() {
             {/* channels */}
             <Reveal delay={200}>
               <div className="flex flex-col gap-3">
-                {['B2B', 'D2C', 'GLOBAL MARKET'].map((c) => (
+                {["B2B", "D2C", "GLOBAL MARKET"].map((c) => (
                   <div
                     key={c}
                     className="flex items-center justify-between rounded-lg border border-accent/40 bg-surface px-4 py-3.5"
@@ -360,7 +392,10 @@ export function AggregatedBrands() {
                     <span className="font-latin text-sm font-bold tracking-wide text-foreground">
                       {c}
                     </span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+                    <span
+                      className="h-1.5 w-1.5 rounded-full bg-accent"
+                      aria-hidden
+                    />
                   </div>
                 ))}
               </div>
@@ -377,7 +412,7 @@ export function AggregatedBrands() {
               <SectionLabel>VALUE FOR PRODUCERS</SectionLabel>
             </Reveal>
             <Reveal delay={80}>
-              <h3 className="mt-7 text-pretty text-3xl font-semibold tracking-tight md:text-4xl">
+              <h3 className="mt-7 text-pretty text-3xl font-semibold tracking-tight md:text-4xl font-modam">
                 تولیدکننده از پیوستن چه به‌دست می‌آورد؟
               </h3>
             </Reveal>
@@ -388,9 +423,9 @@ export function AggregatedBrands() {
               <Reveal key={v.title} delay={(i % 4) * 70}>
                 <div className="flex h-full flex-col border-b border-border py-7 md:px-7 md:[&:not(:nth-child(4n+1))]:border-r md:[&:not(:nth-child(4n+1))]:border-border">
                   <span className="font-latin text-xs font-bold tabular-nums text-accent">
-                    {String(i + 1).padStart(2, '0')}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h4 className="mt-4 text-pretty font-semibold leading-snug text-foreground">
+                  <h4 className="mt-4 text-pretty font-semibold leading-snug text-foreground font-modam">
                     {v.title}
                   </h4>
                   <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
@@ -412,7 +447,7 @@ export function AggregatedBrands() {
                 <SectionLabel>BRAND ARCHITECTURE</SectionLabel>
               </Reveal>
               <Reveal delay={80}>
-                <h3 className="mt-6 text-pretty text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+                <h3 className="mt-6 text-pretty text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl font-modam">
                   یک پلتفرم، چند برند جهانی
                 </h3>
               </Reveal>
@@ -420,7 +455,7 @@ export function AggregatedBrands() {
             <Reveal delay={160}>
               <p className="max-w-md text-pretty leading-relaxed text-muted-foreground md:pb-2">
                 وتروس می‌تواند در صنایع مختلف، برندهای تجمیعی مستقلی توسعه دهد؛
-                هر برند، شبکه‌ای از تولیدکنندگان زیر یک هویت مشترک.
+                هر برند، شبکه‌ای از تولیدکنندگان زیر یک هویت بین‌المللی مشترک.
               </p>
             </Reveal>
           </div>
@@ -433,32 +468,57 @@ export function AggregatedBrands() {
                     <span className="font-latin text-sm font-bold tabular-nums text-border transition-colors group-hover:text-accent">
                       {b.num}
                     </span>
+
                     <span className="font-latin text-[11px] font-bold tracking-[0.2em] text-muted-foreground transition-colors group-hover:text-foreground">
                       {b.brand}
                     </span>
                   </div>
-                  <h4 className="mt-8 text-xl font-semibold text-foreground">
-                    {b.name}
-                  </h4>
-                  <p className="mt-1 text-sm text-accent">{b.industry}</p>
+                  <div className="flex items-center justify-between  mt-5">
+                    <div className="flex flex-col gap-0.5">
+                      <h4 className=" text-xl font-semibold text-foreground">
+                        {b.name}
+                      </h4>
+                      <p className=" text-sm text-accent">{b.industry}</p>
+                    </div>
+                    <div className="relative aspect-square size-12">
+                      <Image
+                        fill
+                        src={b.image}
+                        alt={b.name}
+                        className="block size-full object-cover"
+                      />
+                    </div>
+                  </div>
 
                   <span className="mt-7 block h-px w-full bg-border" />
 
                   <ul className="mt-6 space-y-2.5 text-[13px] text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                      <span
+                        className="h-1 w-1 rounded-full bg-accent"
+                        aria-hidden
+                      />
                       چند تولیدکننده
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                      <span
+                        className="h-1 w-1 rounded-full bg-accent"
+                        aria-hidden
+                      />
                       یک برند مشترک
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                      <span
+                        className="h-1 w-1 rounded-full bg-accent"
+                        aria-hidden
+                      />
                       استاندارد مشترک
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                      <span
+                        className="h-1 w-1 rounded-full bg-accent"
+                        aria-hidden
+                      />
                       بازار جهانی
                     </li>
                   </ul>
@@ -470,9 +530,9 @@ export function AggregatedBrands() {
           <Reveal delay={200}>
             <p className="mt-12 max-w-3xl text-pretty leading-relaxed text-muted-foreground md:mt-14">
               این برندها بر پایه استانداردهای طراحی جهانی توسعه یافته‌اند،
-              گواهی‌نامه‌های بین‌المللی <span className="font-latin">ISO</span> لازم
-              را دریافت کرده‌اند و برای ورود و فعالیت پایدار در بازارهای جهانی
-              آماده‌سازی می‌شوند.
+              گواهی‌نامه‌های بین‌المللی <span className="font-latin">ISO</span>{" "}
+              لازم را دریافت کرده‌اند و برای ورود و فعالیت پایدار در بازارهای
+              جهانی آماده‌سازی می‌شوند.
             </p>
           </Reveal>
         </div>
@@ -488,16 +548,16 @@ export function AggregatedBrands() {
               </SectionLabel>
             </Reveal>
             <Reveal delay={80}>
-              <h3 className="mt-7 text-balance text-3xl font-semibold leading-[1.35] tracking-tight md:text-4xl lg:text-[44px] lg:leading-[1.3]">
+              <h3 className="mt-7 text-balance font-modam text-3xl font-semibold leading-[1.35] tracking-tight md:text-4xl lg:text-[44px] lg:leading-[1.3]">
                 رشد برند، به رشد شبکه تولید بازمی‌گردد.
               </h3>
             </Reveal>
             <Reveal delay={140}>
               <p className="mx-auto mt-7 max-w-xl text-pretty leading-relaxed text-muted-foreground">
-              با توسعه برندهای تجمیعی و افزایش ظرفیت فروش، ارزش ایجادشده
-              می‌تواند در مسیر توسعه شبکه تولید، ارتقای تجهیزات، افزایش ظرفیت
-              کارگاه‌ها، توسعه محصولات و ایجاد واحدهای تولیدی جدید دوباره به
-              چرخه تولید بازگردد.
+                با توسعه برندهای تجمیعی و افزایش ظرفیت فروش، ارزش ایجادشده
+                می‌تواند در مسیر توسعه شبکه تولید، ارتقای تجهیزات، افزایش ظرفیت
+                کارگاه‌ها، توسعه محصولات و ایجاد واحدهای تولیدی جدید دوباره به
+                چرخه تولید بازگردد.
               </p>
             </Reveal>
             <Reveal delay={200}>
@@ -523,7 +583,7 @@ export function AggregatedBrands() {
             <SectionLabel>THE MODEL</SectionLabel>
           </Reveal>
           <Reveal delay={80}>
-            <h3 className="mt-7 max-w-4xl text-balance text-3xl font-semibold leading-[1.3] tracking-tight md:text-5xl lg:text-[56px] lg:leading-[1.2]">
+            <h3 className="mt-7 max-w-4xl text-balance font-modam text-3xl font-semibold leading-[1.3] tracking-tight md:text-5xl lg:text-[56px] lg:leading-[1.2]">
               از تولیدکنندگان پراکنده،
               <br />
               برندهای جهانی می‌سازیم.
@@ -533,7 +593,8 @@ export function AggregatedBrands() {
             <p className="mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
               وتروس با اتصال تولیدکنندگان، ایجاد زیرساخت‌های مشترک و توسعه
               برندهای تجمیعی، تلاش می‌کند ظرفیت‌های تولیدی پراکنده را به
-              مجموعه‌هایی منسجم، استاندارد و قابل‌رقابت در بازار جهانی تبدیل کند.
+              مجموعه‌هایی منسجم، استاندارد و قابل‌رقابت در بازار جهانی تبدیل
+              کند.
             </p>
           </Reveal>
           <Reveal delay={200}>
@@ -551,5 +612,5 @@ export function AggregatedBrands() {
         </div>
       </div>
     </section>
-  )
+  );
 }

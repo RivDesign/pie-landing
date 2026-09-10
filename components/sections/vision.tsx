@@ -1,8 +1,8 @@
-import { Reveal } from '@/components/reveal'
-import { SectionLabel } from '@/components/section-label'
-import { ArrowLeft } from 'lucide-react'
+import { Reveal } from "@/components/reveal";
+import { SectionLabel } from "@/components/section-label";
+import { ArrowLeft } from "lucide-react";
 
-const VETROS_URL = 'https://vetros.ir'
+const VETROS_URL = "https://vetros.ir";
 
 export function Vision() {
   return (
@@ -16,7 +16,7 @@ export function Vision() {
           <SectionLabel index="08">THE VISION</SectionLabel>
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-8 text-balance text-5xl font-semibold leading-[1.15] tracking-tight sm:text-6xl md:text-7xl lg:text-[92px] lg:leading-[1.08]">
+          <h2 className="mt-8 text-balance text-5xl font-modam font-semibold leading-[1.15] tracking-tight sm:text-6xl md:text-7xl lg:text-[92px] lg:leading-[1.08]">
             از یک کارگاه
             <br />
             <span className="text-accent">تا یک برند جهانی.</span>
@@ -54,5 +54,5 @@ export function Vision() {
         </Reveal>
       </div>
     </section>
-  )
+  );
 }

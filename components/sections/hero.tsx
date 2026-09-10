@@ -1,6 +1,6 @@
-import { Reveal } from '@/components/reveal'
-import { HeroVisual } from '@/components/hero-visual'
-import { ArrowLeft } from 'lucide-react'
+import { Reveal } from "@/components/reveal";
+import { HeroVisual } from "@/components/hero-visual";
+import { ArrowLeft } from "lucide-react";
 
 export function Hero() {
   return (
@@ -37,11 +37,11 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={80}>
-          <h1 className="mt-10 max-w-[64rem] text-balance text-[27px] font-bold leading-[1.5] tracking-tight sm:text-[34px] sm:leading-[1.5] md:text-[46px] md:leading-[1.45] lg:text-[56px] lg:leading-[1.4]">
-            آینده‌ای قدرتمند برای تولید ایران؛
-            <br className="hidden sm:block" />{' '}
+          <h1 className="mt-10 max-w-5xl text-balance text-[27px] leading-normal tracking-tight sm:text-[34px] sm:leading-normal md:text-[46px] md:leading-[1.45] lg:text-[56px] lg:leading-[1.4] font-modam font-bold">
+            آینده‌ای قدرتمند برای تولید ملی ایرانیان ایران؛
+            <br className="hidden sm:block" />{" "}
             <span className="text-muted-foreground">
-              با گردهم‌آوردن تولیدکنندگان و اتصال محصولات ایرانی به بازارهای
+              با ایجاد اتحاد بین تولیدکنندگان و اتصال محصولات ایرانی به بازارهای
               جهانی
             </span>
           </h1>
@@ -88,5 +88,5 @@ export function Hero() {
         </div>
       </Reveal>
     </section>
-  )
+  );
 }

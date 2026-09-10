@@ -1,50 +1,54 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
-import { Reveal } from '@/components/reveal'
-import { SectionLabel } from '@/components/section-label'
-import { cn } from '@/lib/utils'
+import { useEffect, useRef, useState } from "react";
+import { Reveal } from "@/components/reveal";
+import { SectionLabel } from "@/components/section-label";
+import { cn } from "@/lib/utils";
 
 const STEPS = [
   {
-    num: '01',
-    title: 'مشارکت مردمی',
-    desc: 'مشارکت مردم در توسعه و ایجاد ظرفیت‌های تولیدی',
+    num: "01",
+    title: "مشارکت مردمی",
+    desc: "مشارکت مردم در توسعه و ایجاد ظرفیت‌های تولیدی",
   },
-  { num: '02', title: 'ارزیابی', desc: 'بررسی ظرفیت و وضعیت فعلی تولید' },
+  { num: "02", title: "ارزیابی", desc: "بررسی ظرفیت و وضعیت فعلی تولید" },
   {
-    num: '03',
-    title: 'تأمین',
-    desc: 'تأمین مواد اولیه، تجهیزات و ابزار موردنیاز',
+    num: "03",
+    title: "تأمین",
+    desc: "تأمین مواد اولیه، تجهیزات و ابزار موردنیاز",
   },
-  { num: '04', title: 'تجهیز', desc: 'ارتقای کارگاه و فرآیند تولید' },
+  { num: "04", title: "تجهیز", desc: "ارتقای کارگاه و فرآیند تولید" },
   {
-    num: '05',
-    title: 'توسعه',
-    desc: 'بهبود محصول، طراحی و توسعه فرآیند تولید',
-  },
-  {
-    num: '06',
-    title: 'استانداردسازی',
-    desc: 'کنترل کیفیت و آماده‌سازی مطابق استانداردهای بازار هدف',
+    num: "05",
+    title: "توسعه",
+    desc: "بهبود محصول، طراحی و توسعه فرآیند تولید",
   },
   {
-    num: '07',
-    title: 'برندینگ',
-    desc: 'توسعه هویت برند، بسته‌بندی و آماده‌سازی محصول',
+    num: "06",
+    title: "استانداردسازی",
+    desc: "کنترل کیفیت و آماده‌سازی مطابق استانداردهای بازار هدف",
   },
-  { num: '08', title: 'بازار', desc: 'اتصال محصول به شبکه فروش و بازارهای هدف' },
   {
-    num: '09',
-    title: 'لجستیک',
-    desc: 'انبارداری، حمل‌ونقل و آماده‌سازی زنجیره توزیع',
+    num: "07",
+    title: "برندینگ",
+    desc: "توسعه هویت برند، بسته‌بندی و آماده‌سازی محصول",
   },
-  { num: '10', title: 'صادرات', desc: 'ورود محصول به بازارهای بین‌المللی' },
-]
+  {
+    num: "08",
+    title: "بازار",
+    desc: "اتصال محصول به شبکه فروش و بازارهای هدف",
+  },
+  {
+    num: "09",
+    title: "لجستیک",
+    desc: "انبارداری، حمل‌ونقل و آماده‌سازی زنجیره توزیع",
+  },
+  { num: "10", title: "صادرات", desc: "ورود محصول به بازارهای بین‌المللی" },
+];
 
 export function Journey() {
-  const [active, setActive] = useState(0)
-  const itemRefs = useRef<(HTMLLIElement | null)[]>([])
+  const [active, setActive] = useState(0);
+  const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,18 +57,18 @@ export function Journey() {
           if (entry.isIntersecting) {
             const idx = Number(
               (entry.target as HTMLElement).dataset.index ?? 0,
-            )
-            setActive(idx)
+            );
+            setActive(idx);
           }
-        })
+        });
       },
-      { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
-    )
-    itemRefs.current.forEach((el) => el && observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+    );
+    itemRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
-  const progress = ((active + 1) / STEPS.length) * 100
+  const progress = ((active + 1) / STEPS.length) * 100;
 
   return (
     <section
@@ -77,7 +81,7 @@ export function Journey() {
             <SectionLabel index="05">PRODUCER JOURNEY</SectionLabel>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-7 text-pretty text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+            <h2 className="mt-7 text-pretty text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl font-modam">
               تولیدکننده از کجا شروع می‌کند؟
             </h2>
           </Reveal>
@@ -95,7 +99,7 @@ export function Journey() {
                   از {STEPS.length}
                 </span>
               </div>
-              <h3 className="mt-6 text-3xl font-semibold text-foreground">
+              <h3 className="mt-6 text-3xl font-semibold text-foreground font-modam">
                 {STEPS[active].title}
               </h3>
               <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
@@ -122,30 +126,28 @@ export function Journey() {
                 key={s.num}
                 data-index={i}
                 ref={(el) => {
-                  itemRefs.current[i] = el
+                  itemRefs.current[i] = el;
                 }}
                 className="relative py-6 pr-10"
               >
                 <span
                   className={cn(
-                    'absolute right-1.5 top-8 h-3 w-3 rounded-full border-2 bg-background transition-colors duration-300',
-                    i <= active
-                      ? 'border-accent bg-accent'
-                      : 'border-border',
+                    "absolute right-1.5 top-8 h-3 w-3 rounded-full border-2 bg-background transition-colors duration-300",
+                    i <= active ? "border-accent bg-accent" : "border-border",
                   )}
                   aria-hidden
                 />
                 <div
                   className={cn(
-                    'transition-all duration-300',
-                    i === active ? 'opacity-100' : 'opacity-45',
+                    "transition-all duration-300",
+                    i === active ? "opacity-100" : "opacity-45",
                   )}
                 >
                   <div className="flex items-baseline gap-3">
                     <span className="font-latin text-sm font-semibold text-muted-foreground tabular-nums">
                       {s.num}
                     </span>
-                    <h4 className="text-2xl font-semibold text-foreground md:text-3xl">
+                    <h4 className="text-2xl font-semibold text-foreground md:text-3xl font-modam">
                       {s.title}
                     </h4>
                   </div>
@@ -159,5 +161,5 @@ export function Journey() {
         </div>
       </div>
     </section>
-  )
+  );
 }

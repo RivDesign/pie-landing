@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import { useState, type FormEvent } from 'react'
-import { Reveal } from '@/components/reveal'
-import { SectionLabel } from '@/components/section-label'
-import { Mail, MapPin, Check } from 'lucide-react'
+import { useState, type FormEvent } from "react";
+import { Reveal } from "@/components/reveal";
+import { SectionLabel } from "@/components/section-label";
+import { Mail, MapPin, Check } from "lucide-react";
 
 const COOP_TYPES = [
-  'برای همکاری با ما',
-  'برای پیوستن به شبکه تولیدکنندگان',
-  'برای توسعه یک برند',
-  'برای مشارکت در پروژه‌های تولیدی',
-]
+  "برای همکاری با ما",
+  "برای پیوستن به شبکه تولیدکنندگان",
+  "برای توسعه یک برند",
+  "برای مشارکت در پروژه‌های تولیدی",
+];
 
 export function Contact() {
-  const [sent, setSent] = useState(false)
+  const [sent, setSent] = useState(false);
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setSent(true)
+    e.preventDefault();
+    setSent(true);
   }
 
   return (
@@ -33,14 +33,14 @@ export function Contact() {
               <SectionLabel index="07">GET IN TOUCH</SectionLabel>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-7 text-pretty text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+              <h2 className="mt-7 text-pretty text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl font-modam">
                 با تیم <span className="font-latin">PIE</span> در ارتباط باشید.
               </h2>
             </Reveal>
             <Reveal delay={160}>
               <p className="mt-6 max-w-md text-pretty leading-relaxed text-muted-foreground">
                 اگر تولیدکننده، صاحب برند، سرمایه‌گذار پروژه، متخصص صنعتی یا
-                مجموعه‌ای علاقه‌مند به همکاری با وتروس هستید، با تیم{' '}
+                مجموعه‌ای علاقه‌مند به همکاری با وتروس هستید، با تیم{" "}
                 <span className="font-latin">PIE</span> در ارتباط باشید.
               </p>
             </Reveal>
@@ -147,19 +147,19 @@ export function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function Field({
   label,
   name,
-  type = 'text',
+  type = "text",
   required,
 }: {
-  label: string
-  name: string
-  type?: string
-  required?: boolean
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
 }) {
   return (
     <div>
@@ -177,5 +177,5 @@ function Field({
         className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
       />
     </div>
-  )
+  );
 }
