@@ -1,8 +1,8 @@
 import { ImageIcon } from "lucide-react";
 import ImgEcoIren from "@/assets/eco iren.png";
 import ImgZenqovo from "@/assets/zenqovo.png";
-import ImgNichvan from "@/assets/nichvan.png";
 import ImgWhiteDeer from "@/assets/white deer.png";
+import ImgNichvan from "@/assets/nichvan.png";
 import Image, { StaticImageData } from "next/image";
 /**
  * Product gallery scaffold for the four main VETROS production branches.
@@ -12,8 +12,8 @@ import Image, { StaticImageData } from "next/image";
 const BRANCHES = [
   { num: "01", name: "صنایع غذایی", slots: 3, image: ImgEcoIren },
   { num: "02", name: "کیف، کفش و پوشاک", slots: 3, image: ImgZenqovo },
-  { num: "03", name: "صنایع دستی", slots: 3, image: ImgNichvan },
-  { num: "04", name: "مبلمان و تجهیزات خانه", slots: 3, image: ImgWhiteDeer },
+  { num: "03", name: "صنایع دستی", slots: 3, image: ImgWhiteDeer },
+  { num: "04", name: "مبلمان و تجهیزات خانه", slots: 3, image: ImgNichvan },
 ];
 
 export function ProductGallery() {
